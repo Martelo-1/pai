@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Dia dos Pais</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .pulse {
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .photo-frame {
+            border: 15px solid #f3e8cb;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .btn-animate {
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        .btn-animate:hover {
+            transform: scale(1.05);
+            background-color: #fbbf24;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-blue-50 to-amber-50 min-h-screen font-sans">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-bold text-amber-800 mb-4">Feliz Dia dos Pais!</h1>
+            <div class="mt-6">
+                <i class="fas fa-hat-cowboy text-amber-800 text-5xl pulse"></i>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Photo Section -->
+            <section class="mb-16 flex justify-center">
+                <div class="photo-frame bg-white p-2 max-w-md">
+                    <img id="dadPhoto" src="Pai_eu_e_Paola.jpeg" 
+                         alt="Pai eu e Paola" 
+                         class="w-full h-auto object-cover rounded-lg">
+                </div>
+            </section>
+
+            <!-- Message Section -->
+            <section class="max-w-2xl mx-auto mb-16 bg-white p-8 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold text-amber-800 mb-6">Um texto para o senhor</h2>
+                <p class="text-gray-700 mb-6 leading-relaxed" id="message">
+                    Pai, obrigado por desde pequeno cuidar de mim. Eu admiro bastante o senhor. 
+                    Me desculpa pelos erros e por não ser o melhor filho. 
+                    Às vezes nos desentendemos, mas apesar de tudo somos família. 
+                    Muito obrigado por tudo!
+                </p>
+            </section>
+
+            <!-- Music Button -->
+            <div class="text-center">
+                <button id="musicBtn" class="px-6 py-3 bg-amber-500 text-white font-bold rounded-full shadow-lg btn-animate">
+                    <i class="fas fa-play"></i> Tocar Música
+                </button>
+                <audio id="dadSong" src="Pai_Musica.mp3"></audio>
+            </div>
+        </main>
+
+    </div>
+
+    <script>
+        const musicBtn = document.getElementById("musicBtn");
+        const dadSong = document.getElementById("dadSong");
+        let isPlaying = false;
+
+        musicBtn.addEventListener("click", () => {
+            if (!isPlaying) {
+                dadSong.play();
+                musicBtn.innerHTML = '<i class="fas fa-pause"></i> Pausar Música';
+                isPlaying = true;
+            } else {
+                dadSong.pause();
+                musicBtn.innerHTML = '<i class="fas fa-play"></i> Tocar Música';
+                isPlaying = false;
+            }
+        });
+    </script>
+</body>
+</html>
