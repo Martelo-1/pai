@@ -1,2 +1,0 @@
-# pai
-tentando fazer algo
